@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "python": "${workspaceFolder}/bin/python3.9",
+            "python": "${workspaceFolder}/env/bin/python3.9",
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",

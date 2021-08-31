@@ -4,7 +4,7 @@
         {
             "label": "run python file",
             "type": "shell",
-            "command": "while inotifywait -e close_write ${file}; do ./bin/python3.9 ${file}; done"
+            "command": "while inotifywait -e close_write ${file}; do ./env/bin/python3.9 ${file}; done"
         }
     ]
 }
