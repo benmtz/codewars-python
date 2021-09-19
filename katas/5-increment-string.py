@@ -13,11 +13,13 @@
 import unittest
 import re
 
+
 def increment_string(strng):
     splited = re.split("(\d+)$", strng)
     ending_digits = splited[1] if len(splited) > 2 else "0"
-    pad_digit_token = "0{PadTo}".format(PadTo = len(ending_digits))
-    return "{0}{1}".format(splited[0], format(int(ending_digits)+1, pad_digit_token))
+    pad_digit_token = "0{PadTo}".format(PadTo=len(ending_digits))
+    return "{0}{1}".format(splited[0], format(int(ending_digits) + 1, pad_digit_token))
+
 
 class TestAnagrams(unittest.TestCase):
 
@@ -29,6 +31,3 @@ class TestAnagrams(unittest.TestCase):
         self.assertEqual(increment_string("foobar99"), "foobar100")
         self.assertEqual(increment_string("foobar099"), "foobar100")
         self.assertEqual(increment_string(""), "1")
-
-if __name__ == '__main__':
-    unittest.main()

@@ -18,43 +18,49 @@
 # # should return False
 # same_structure_as([ [ [ ], [ ] ] ], [ [ 1, 1 ] ] )
 
-import collections
+from unittest import TestCase
 
-same_type = lambda x, y : type(x) == type(y)
-is_sequence = lambda s: isinstance(s, collections.Sequence)
 
-def same_structure_as(original,other):
-    if not same_type(original, other):
+def are_both_sequences(x, y): return (is_sequence(x) and is_sequence(y))
+
+
+def are_not_sequences(x, y): return not is_sequence(x) and not is_sequence(y)
+
+
+def are_alike(x, y): return are_not_sequences(x, y) or are_both_sequences(x, y)
+
+
+def is_sequence(s): return type(s) is list
+
+
+def same_structure_as(original, other):
+    if not are_alike(original, other):
         return False
     for idx, val in enumerate(original):
-        if other[idx] is None: # Out of bound protection
+        if other[idx] is None:  # Out of bound protection
             return False
         other_val = other[idx]
-        if not same_type(val, other_val):
+        if not are_alike(val, other_val):
             return False
         if is_sequence(val) and (len(other_val) != len(val) or not same_structure_as(val, other_val)):
             return False
     return True
 
-import unittest
 
-class TestAnagrams(unittest.TestCase):
+class TestAnagrams(TestCase):
 
-      def test_1(self):
-        self.assertEqual(same_structure_as([ 1, 1, 1 ], [ 2, 2, 2 ]), True)
-        self.assertEqual(same_structure_as([ 1, [ 1, 1 ] ], [ 2, [ 2, 2 ] ] ), True)
+    def test_1(self):
+        self.assertEqual(same_structure_as([1, 1, 1], [2, 2, 2]), True)
+        self.assertEqual(same_structure_as([1, [1, 1]], [2, [2, 2]]), True)
 
-        self.assertEqual(same_structure_as([ 1, [ 1, 1 ] ], [ [ 2, 2 ], 2 ] ), False)
-        self.assertEqual(same_structure_as([ 1, [ 1, 1 ] ], [ [ 2 ], 2 ] ), False)
+        self.assertEqual(same_structure_as([1, [1, 1]], [[2, 2], 2]), False)
+        self.assertEqual(same_structure_as([1, [1, 1]], [[2], 2]), False)
 
-        self.assertEqual(same_structure_as([ [ [ ], [ ] ] ], [ [ [ ], [ ] ] ] ), True)
+        self.assertEqual(same_structure_as([[[], []]], [[[], []]]), True)
 
-        self.assertEqual(same_structure_as([ [ [ ], [ ] ] ], [ [ 1, 1 ] ] ), False)
-        
+        self.assertEqual(same_structure_as([[[], []]], [[1, 1]]), False)
+
         self.assertEqual(same_structure_as([], 1), False)
         self.assertEqual(same_structure_as([], {}), False)
-        
-        self.assertEqual(same_structure_as([1,'[',']'], ['[',']',1]), True)
 
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(same_structure_as([1, '[', ']'], ['[', ']', 1]), True)
