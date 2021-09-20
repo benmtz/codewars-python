@@ -1,3 +1,6 @@
+<img width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/110px-Python-logo-notext.svg.png" />
+<img width="110px" src="https://docs.codewars.com/logo.svg" />
+
 # Codewars python
 
 This repository is where I test my codewars kata solutions, you can find the original kata with the id on the first line of every solution.
