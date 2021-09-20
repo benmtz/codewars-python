@@ -1,4 +1,4 @@
 set -ex
 
 ./env/bin/pycodestyle katas
-./scripts/test.sh
+./env/bin/python -m unittest -f katas/*.py
