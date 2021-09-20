@@ -1,11 +1,13 @@
 import unittest
 
+
 def make_readable(seconds):
     return "{hours:02d}:{minutes:02d}:{seconds:02d}".format(
         hours=int(seconds / 3600),
         minutes=int(seconds / 60) % 60,
         seconds=seconds % 60
     )
+
 
 class TestMakeReadable(unittest.TestCase):
     def test_1(self):

@@ -21,8 +21,15 @@ def anagrams(word: str, words: Sequence[str]):
 class TestAnagrams(TestCase):
 
     def test_1(self):
-        self.assertEqual(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']), ['aabb', 'bbaa'], "Array differ")
+        self.assertEqual(
+            anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']),
+            ['aabb', 'bbaa'],
+            "Array differ"
+        )
 
     def test_2(self):
-        self.assertEqual(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']), ['carer', 'racer'],
-                         "Array differ")
+        self.assertEqual(
+            anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']),
+            ['carer', 'racer'],
+            "Array differ"
+        )
