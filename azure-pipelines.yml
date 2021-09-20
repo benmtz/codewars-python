@@ -10,10 +10,9 @@ pool:
   name: BenPool
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: pip install -r requirements.txt
+  displayName: 'Install dependencies'
+- script: pycodestyle katas
+  displayName: 'Linting katas'
+- script: python -m unittest -f katas/*.py
+  displayName: 'Testing katas'
