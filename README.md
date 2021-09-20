@@ -1,5 +1,7 @@
-<img width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/110px-Python-logo-notext.svg.png" />
-<img width="110px" src="https://docs.codewars.com/logo.svg" />
+<div style="display:flex;">
+  <img width="110px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/110px-Python-logo-notext.svg.png" />
+  <img width="110px" src="https://docs.codewars.com/logo.svg" />
+</div>
 
 # Codewars python
 
