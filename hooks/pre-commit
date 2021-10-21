@@ -1,4 +1,4 @@
 set -ex
 
-./env/bin/pycodestyle katas
-./env/bin/python -m unittest -f katas/*.py
+./venv/bin/pycodestyle katas
+./venv/bin/python -m unittest -f katas/*.py

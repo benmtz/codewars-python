@@ -11,7 +11,7 @@ This repository is where I test my codewars kata solutions, you can find the ori
 
 ```sh
 python -m venv env
-./env/bin/pip install -r requirements.txt
+./venv/bin/pip install -r requirements.txt
 ```
 
 ## Useful commands
@@ -20,7 +20,7 @@ python -m venv env
 # Use the hooks folder to run pre-commit lint and test
 git config core.hooksPath hooks
 # Runing lint
-./env/bin/pycodestyle katas
+./venv/bin/pycodestyle katas
 # Running tests
-./env/bin/python -m unittest -f katas/*.py
+./venv/bin/python -m unittest -f katas/*.py
 ```
