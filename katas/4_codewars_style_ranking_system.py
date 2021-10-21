@@ -20,7 +20,8 @@
 # (Once you reach rank 8 there is no more progression). A user cannot progress
 # beyond rank 8.
 # The only acceptable range of rank values is
-# -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an error.
+# -8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8. Any other value should raise an
+# error.
 # The progress is scored like so:
 #
 # Completing an activity that is ranked the same as that of the user's will be
@@ -65,11 +66,13 @@ from unittest import TestCase
 
 ranks = list(range(-8, 0)) + list(range(1, 9))
 
+
 class User:
 
     # Using a getter take abstraction of the no 0 rank rule
     def get_rank(self):
         return ranks[self.rank_index]
+
     rank = property(get_rank)
 
     def __init__(self):
@@ -78,7 +81,6 @@ class User:
 
     def get_progress_points(self, new_rank_index):
         rank_diff = new_rank_index - self.rank_index
-        print("rank_diff: {}, new_index: {}, current_index: {}".format(rank_diff, new_rank_index, self.rank_index))
         if rank_diff <= -2:
             return 0
         elif rank_diff == -1:
@@ -97,12 +99,9 @@ class User:
     def inc_progress(self, rank):
         print("u: {}, ex: {}".format(self.rank, rank))
         new_rank_index = ranks.index(rank)
-        print("new_rank is {} ({})".format(new_rank_index, ranks[new_rank_index]))
         self.progress += self.get_progress_points(new_rank_index)
-        print("before level flushing: {}".format(self.progress))
         while self.progress >= 100:
             self.level_up()
-            print("levelup - new progress: {} - new rank: {}".format(self.progress, self.rank))
 
 
 class Test4CodewarsStyleRankingSystem(TestCase):
