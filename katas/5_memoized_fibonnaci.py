@@ -58,6 +58,10 @@ def cache_result(func):
 #     if n in [0, 1]:
 #         return n
 #     return fibonacci(n - 1) + fibonacci(n - 2)
+#
+# After reading this https://docs.python.org/3/library/functools.html
+# we could simply use @cache
+
 
 @cache_result
 def fibonacci(n):
